@@ -1,0 +1,1403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta name='generator' content='ExamView HTML Generator 1.1.0'>
+	<meta name='robots' content='noindex,nofollow'>
+	<title>Chapter 13 Test</title>
+	<style type='text/css'>
+		.spacer { line-height:.7em; }
+		.title { font-size:13pt; font-weight:bold; font-family:"Times New Roman", "Times", serif; color:#000000; }
+		.qnumber { font-size:12pt; font-family:"Times New Roman", "Times", serif; color:#000000; text-align:right; }
+		.choice { font-size:12pt; font-family:"Times New Roman", "Times", serif; color:#000000; }
+		.default { font-size:12pt; font-family:"Times New Roman", "Times", serif; color:#000000; }
+		.qinfo { font-size:12pt; font-family:"Times New Roman", "Times", serif; color:#000000; }
+		.points { font-size:8pt; font-family:"Times New Roman", "Times", serif; color:#000000; }
+		TD.pad { padding: 0pt 4pt 0pt 4pt; }
+		.font1 { font-family:"Times New Roman", "Times", serif; }
+		.font2 { font-family:"Times New Roman", "Times", serif; }
+	</style>
+<script type='text/javascript' language='JavaScript1.1'>
+<!--
+	// Copyright (c) 2000-2008 eInstruction Corp.
+	var listMap = '111111111111111111111111100000000000';
+	var qtypeMap = '222222222222222222222222299999999999';
+	var ansMap = new Array(36);
+	var ptsMap = new Array(36);
+	ansMap[0] = '45';
+	ptsMap[0] = 1;
+	ansMap[1] = '41';
+	ptsMap[1] = 1;
+	ansMap[2] = '41';
+	ptsMap[2] = 1;
+	ansMap[3] = '45';
+	ptsMap[3] = 1;
+	ansMap[4] = '47';
+	ptsMap[4] = 1;
+	ansMap[5] = '47';
+	ptsMap[5] = 1;
+	ansMap[6] = '45';
+	ptsMap[6] = 1;
+	ansMap[7] = '4c';
+	ptsMap[7] = 1;
+	ansMap[8] = '4b';
+	ptsMap[8] = 1;
+	ansMap[9] = '4e';
+	ptsMap[9] = 1;
+	ansMap[10] = '48';
+	ptsMap[10] = 1;
+	ansMap[11] = '48';
+	ptsMap[11] = 1;
+	ansMap[12] = '49';
+	ptsMap[12] = 1;
+	ansMap[13] = '4f';
+	ptsMap[13] = 1;
+	ansMap[14] = '4b';
+	ptsMap[14] = 1;
+	ansMap[15] = '53';
+	ptsMap[15] = 1;
+	ansMap[16] = '55';
+	ptsMap[16] = 1;
+	ansMap[17] = '53';
+	ptsMap[17] = 1;
+	ansMap[18] = '51';
+	ptsMap[18] = 1;
+	ansMap[19] = '55';
+	ptsMap[19] = 1;
+	ansMap[20] = '56';
+	ptsMap[20] = 1;
+	ansMap[21] = '54';
+	ptsMap[21] = 1;
+	ansMap[22] = '54';
+	ptsMap[22] = 1;
+	ansMap[23] = '5c';
+	ptsMap[23] = 1;
+	ansMap[24] = '58';
+	ptsMap[24] = 1;
+	ansMap[25] = '';
+	ptsMap[25] = 1;
+	ansMap[26] = '';
+	ptsMap[26] = 1;
+	ansMap[27] = '';
+	ptsMap[27] = 1;
+	ansMap[28] = '';
+	ptsMap[28] = 1;
+	ansMap[29] = '';
+	ptsMap[29] = 1;
+	ansMap[30] = '';
+	ptsMap[30] = 1;
+	ansMap[31] = '';
+	ptsMap[31] = 1;
+	ansMap[32] = '';
+	ptsMap[32] = 1;
+	ansMap[33] = '';
+	ptsMap[33] = 1;
+	ansMap[34] = '';
+	ptsMap[34] = 1;
+	ansMap[35] = '';
+	ptsMap[35] = 1;
+	function HandleSubmit(f)
+	{
+		var	MAGIC = 840;
+		var	totalCorrect = 0;
+		var	totalPossible = 0;
+		var	numCorrect = 0;
+		var	numPossible = 0;
+		var	numBlank = 0;
+		var	index;
+		var	msg;
+		var	i;
+
+		f.student_name.value = StripSpaces(f.student_name.value);
+		f.student_id.value = StripSpaces(f.student_id.value);
+		f.student_email.value = StripSpaces(f.student_email.value);
+
+		FixMR(f);
+		FixMTF(f);
+		index = 0;
+		for (i=0; i < f.length; ++i) {
+			if (f.elements[i].name.indexOf(":") > 0) {
+				if (listMap.charAt(index) == "1") {
+					listIndex = f.elements[i].selectedIndex;
+					text = StripSpaces(f.elements[i].options[listIndex].value);
+				} else {
+					f.elements[i].value = StripSpaces(f.elements[i].value);
+					text = f.elements[i].value;
+				}
+
+				if (text.length == 0)
+					++numBlank;
+				++index;
+			}
+		}
+
+		if (f.student_name.value == "") {
+			alert("Student name cannot be blank.");
+			return(false);
+		}
+
+		if (numBlank > 0) {
+			if (numBlank == 1)
+				msg = "1 question";
+			else
+				msg = numBlank + " questions";
+			if (!confirm("You have not answered " + msg +
+				"  Are you sure you want to end the test?"))
+				return(false);
+		}
+
+		index = 0;
+		var scoreDetails = new Array();
+		for (i=0; i < f.length; ++i) {
+			if (f.elements[i].name.indexOf(":") > 0) {
+				if (listMap.charAt(index) == "1") {
+					listIndex = f.elements[i].selectedIndex;
+					text = f.elements[i].options[listIndex].value;
+				} else
+					text = f.elements[i].value;
+
+				numPossible = ptsMap[index] * MAGIC;
+				if (ansMap[index] == "")
+					scoreDetails[index] = "?--";
+				else {
+					var scoreResult = ScoreAnswer(index, text, numPossible);
+					numCorrect = scoreResult.numPoints;
+					scoreDetails[index] = (scoreResult.isCorrect) ? " " : "X";
+					scoreDetails[index] += (Math.round(numCorrect * 100 / MAGIC) / 100).toString();
+					totalCorrect += numCorrect;
+					totalPossible += numPossible;
+				}
+
+				scoreDetails[index] += "/" + (numPossible / MAGIC);
+				++index;
+			}
+		}
+
+		f.score_details.value = scoreDetails.join("|");
+		f.score_correct.value = Math.round(totalCorrect * 100 / MAGIC) / 100;
+		f.score_possible.value = Math.round(totalPossible * 100 / MAGIC) / 100;
+		if (totalPossible > 0)
+			f.score_percent.value = Math.round(100.0 * totalCorrect / totalPossible);
+		else
+			f.score_percent.value = 0;
+
+		return(true);
+	}
+
+	function TranslateAnswer(s, answerIndex)
+	{
+		var	value;
+		var	newString;
+		var	code;
+		var	i;
+
+		value = (answerIndex % 31) + 1;
+		newString = "";
+		for (i=0; i < s.length; i += 2) {
+			code = parseInt(s.substring(i, i + 2), 16);
+			newString += String.fromCharCode(code ^ value);
+		}
+
+		return(newString);
+	}
+
+	function ScoreAnswer(answerIndex, responseText, pointsPossible)
+	{
+		var answerText = TranslateAnswer(ansMap[answerIndex], answerIndex);
+		var qtype = qtypeMap.charAt(answerIndex);
+		var nrExactMatch = false;
+		var result = new Array();
+
+		result.numPoints = 0;
+		result.isCorrect = false;
+
+		if (qtype == "3" && answerText.substring(0, 2) == "p:") {
+			answerText = answerText.substr(2);
+			if (responseText.toUpperCase() == answerText.toUpperCase())
+				result.isCorrect = true;
+			else
+				result.numPoints = MultiResponseCompare(responseText, answerText, pointsPossible);
+		} else if (qtype == "6") {
+			if (answerText.substring(0, 2) == "==") {
+				answerText = answerText.substr(2);
+				nrExactMatch = true;
+			}
+			if (NumericCompare(responseText, answerText, nrExactMatch))
+				result.isCorrect = true;
+		} else if (qtype == "7") {
+			if (CompletionCompare(responseText, answerText))
+				result.isCorrect = true;
+		} else if (responseText.toUpperCase() == answerText.toUpperCase())
+			result.isCorrect = true;
+
+		if (result.isCorrect)
+			result.numPoints = pointsPossible;
+
+		return(result);
+	}
+
+	function StripSpaces(s)
+	{
+		var	len;
+		var	i;
+
+		len = s.length;
+		for (i=len - 1; i >= 0 && s.charAt(i) == " "; --i)
+			len = i;
+
+		if (len == 0)
+			s = "";
+		else if (len != s.length)
+			s = s.substring(0, len);
+
+		return(s);
+	}
+
+	function MultiResponseCompare(responseText, answerText, pointsPossible)
+	{
+	}
+
+	function NumericCompare(response, answer, exactMatch)
+	{
+	}
+
+
+	function CompletionCompare(responseText, answerText)
+	{
+		return(false);
+	}
+
+    function StripLeadingSpaces(s)
+	{
+		var	len;
+		var	i = 0;
+		var index = -1;
+
+		len = s.length;
+		while(i < len && s.charAt(i) == " ")
+		{
+			index = ++i;			
+	    }
+
+		if (len == 0)
+			s = "";
+		else if (index > -1)
+			s = s.substring(index, len);
+
+		return(s);
+	}
+	
+	function FixMTF(f)
+	{
+	}
+
+	function FixMR(f)
+	{
+	}
+
+	function AllowReset()
+	{
+		return(window.confirm("Do you want to clear all of your answers?"));
+	}
+
+	function Restart()
+	{
+		if (AllowReset()) {
+			document.TestForm.onreset = function() { };
+			document.TestForm.reset();
+			document.TestForm.onreset = function() { AllowReset(); };
+		}
+	}
+// -->
+</script>
+</head>
+<body onResize='if(document.layers && navigator.appVersion.indexOf("Win") < 0){history.go(0);}'
+bgcolor='#FFFFFF' style='background-image:url(chapter_13_test_ess_files/header.gif); background-repeat:no-repeat'>
+<noscript>
+	<h3><font color='#FF0000'>Javascript not enabled</font></h3>
+</noscript>
+<script type='text/javascript' language='JavaScript'>
+<!--
+if (navigator.appName.indexOf("Netscape") >= 0) {
+	if (parseInt(navigator.appVersion.charAt(0)) < 4)
+		alert("This document requires Netscape Navigator version 4.0 or later.");
+} else if (navigator.appName.indexOf("Explorer") >= 0) {
+	if (parseInt(navigator.appVersion.charAt(0)) < 4)
+		alert("This document requires Internet Explorer version 4.0 or later.");
+}
+// -->
+</script>
+<form name='TestForm' action='http://score.examview.com/cgi-bin/results.cgi' method='POST'
+	onSubmit='return(HandleSubmit(this))' onReset='return(AllowReset())'>
+<input type='hidden' name='product_version' value='7.50.1051'>
+<input type='hidden' name='instructor_name' value='Mike Hansen'>
+<input type='hidden' name='instructor_formalname' value='Mr. Hansen'>
+<input type='hidden' name='instructor_email' value='mhansen@wfsd.k12.wi.us'>
+<input type='hidden' name='instructor_org' value='Weyauwega-Fremont HS'>
+<input type='hidden' name='instructor_city' value='Weyauwega'>
+<input type='hidden' name='instructor_state' value='WI'>
+<input type='hidden' name='test_name' value='Chapter 13 Test'>
+<input type='hidden' name='other_label' value='Other'>
+<input type='hidden' name='test_mixed_questions' value='0'>
+<input type='hidden' name='score_correct' value='0'>
+<input type='hidden' name='score_possible' value='0'>
+<input type='hidden' name='score_percent' value='0'>
+<input type='hidden' name='score_subjective' value='11'>
+<input type='hidden' name='score_details' value=''>
+<div class='spacer'>&nbsp;</div>
+<div class='default'>
+	<div style='margin-left:1em'>
+	<b>Name:</b>&nbsp;<input type='text' name='student_name' size='30'> &nbsp;&nbsp;
+	<b>ID:</b>&nbsp;<input type='text' name='student_id' size='12'><br>
+	<div class='spacer'>&nbsp;</div>
+	<b>Email:</b>&nbsp;<input type='text' name='student_email' size='45'><br><br>
+	</div>
+</div>
+<div class='title'>Chapter 13 Test</div>
+
+<table align='left' width='100%' border='0' cellpadding='0' cellspacing='0'>
+<tr valign='top'>
+	<td colspan='3'><br>
+<div class='default'><b>Multiple Choice</b><span style='font-size:10pt'><br></span><i>Identify the
+choice that best completes the statement or answers the question.</i></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:1' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;1.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>Which is NOT a condition that must exist in order to produce a
+thunderstorm?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>a source of moisture</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>an unstable atmosphere</span></td></tr><tr
+valign='baseline'><td><div class='choice'>b.</div></td><td><span class='default'>lifting of the air
+mass</span></td><td><div class='choice'>d.</div></td><td><span class='default'>a source of
+wind</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:2' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;2.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>In what stage of a thunderstorm would an equal amount of updrafts and downdrafts
+exist?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>cirrus stage</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>mature stage</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>cumulus stage</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>dissipation
+stage</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:3' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;3.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>What stage of a thunderstorm is shown below?<br><b><i><img width='288'
+height='288' align='bottom' alt="mc003-1.jpg" src="chapter_13_test_ess_files/mc003-1.jpg"
+border='0'></i></b></div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>cirrus stage</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>mature stage</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>cumulus stage</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>dissipation
+stage</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:4' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;4.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>What ultimately leads to a thunderstorm&#8217;s dissipation?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>the production of downdrafts</span></td><td width='4%'><div
+class='choice'>c.</div></td><td width='46%'><span class='default'>the decrease in cloud
+droplets</span></td></tr><tr valign='baseline'><td><div class='choice'>b.</div></td><td><span
+class='default'>the loss of a supply of cold air</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>the decrease of surface
+winds</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:5' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;5.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>An observer sees a lighting bolt strike and hears thunder 9 seconds later.&nbsp;
+The observer can conclude the lightning stike was approximately _____ miles away.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>9</span></td><td width='4%'><div class='choice'>c.</div></td><td width='46%'><span
+class='default'>3</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>2</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>18</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='top'>
+	<td></td>
+	<td></td>
+	<td>
+<div class='spacer'>&nbsp;</div>
+<div class='default'><div style='font-size:2pt'></div><table cellpadding='0' cellspacing='0'
+width='34%' border='0'><tr valign='top'><td class='pad' style=' border-left:0.8pt solid #000000;
+border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'><b>Enhanced Fujita Scale</b></div></td><td class='pad'
+style=' border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'><b>Wind Speed</b></div></td></tr><tr valign='top'><td
+class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>EF0&#8211;EF1</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>105&#8211;177 km/h</div></td></tr><tr valign='top'><td class='pad' style='
+border-left:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'>EF2&#8211;EF3</div></td><td class='pad' style='
+border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>178&#8211;266 km/h</div></td></tr><tr valign='top'><td class='pad' style='
+border-left:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'>EF4&#8211;EF5</div></td><td class='pad' style='
+border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>&nbsp; 267&#8211;322+ km/h</div></td></tr><tr height='0'
+style='border:none'><td width='50%'></td><td width='50%'></td></tr></table><b><i>Use the scale to
+answer the questions.</i></b></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:6' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;6.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>A tornado lasts 9 min, is 80 m wide, and has wind speeds of 109 km/h.&nbsp; What
+intensity level would it be classified?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>EF0</span></td><td width='4%'><div class='choice'>c.</div></td><td width='46%'><span
+class='default'>EF2&#8211;EF3</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>EF5</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>EF4</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:7' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;7.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>How fast must the winds of a tornado be traveling to be classified as a EF4
+tornado?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>181+ km/h</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>500+ km/h</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>267+ km/h</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>119+ km/h</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:8' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;8.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>A tornado has wind speeds of 265 km/h .&nbsp; What intensity level would it be
+classified as?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>EF0</span></td><td width='4%'><div class='choice'>c.</div></td><td width='46%'><span
+class='default'>EF2</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>EF1</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>EF3</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='top'>
+	<td></td>
+	<td></td>
+	<td>
+<div class='spacer'>&nbsp;</div>
+<div class='default'><b><i><img width='360' height='174' align='bottom' alt="nar002-1.jpg"
+src="chapter_13_test_ess_files/nar002-1.jpg" border='0'><br>Use the diagram to answer the
+questions.</i></b></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:9' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;9.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>At which point would the strongest winds and densest clouds of the hurricane be
+located?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>the eye</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>the rainbands</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>the eyewall</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>the outer edge</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:10' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;10.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>What is characteristic of the eye of the hurricane?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>the strongest winds and densest clouds</span></td><td width='4%'><div
+class='choice'>c.</div></td><td width='46%'><span class='default'>light clouds and
+precipitation</span></td></tr><tr valign='baseline'><td><div class='choice'>b.</div></td><td><span
+class='default'>thunderstorms</span></td><td><div class='choice'>d.</div></td><td><span
+class='default'>calm weather and blue sky</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:11' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;11.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>Because the hurricane is rotating in a counterclockwise direction, what can be
+inferred about this hurricane?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='96%'><span
+class='default'>The moving tropical disturbance which caused this hurricane came from the
+west.</span></td></tr><tr valign='baseline'><td><div class='choice'>b.</div></td><td><span
+class='default'>The moving tropical disturbance which caused this hurricane came from the
+east.</span></td></tr><tr valign='baseline'><td><div class='choice'>c.</div></td><td><span
+class='default'>This hurricane is occurring in the northern hemisphere.</span></td></tr><tr
+valign='baseline'><td><div class='choice'>d.</div></td><td><span class='default'>This hurricane is
+occurring in the southern hemisphere.</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='top'>
+	<td></td>
+	<td></td>
+	<td>
+<div class='spacer'>&nbsp;</div>
+<div class='default'><div style='font-size:2pt'></div><table cellpadding='0' cellspacing='0'
+width='66%' border='0'><tr valign='top'><td class='pad' style=' border-left:0.8pt solid #000000;
+border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'><b>Category</b></div></td><td class='pad' style='
+border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'><b>Winds (km/h)</b></div></td><td class='pad' style='
+border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'><b>Change in sea level</b></div></td><td class='pad' style='
+border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'><b>Damage</b></div></td></tr><tr valign='top'><td
+class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>5</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>&gt;250</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>&gt;5.5 m</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>catastrophic</div></td></tr><tr valign='top'><td class='pad' style='
+border-left:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'>4</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>210-249</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>4.0-5.5 m</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>extreme</div></td></tr><tr valign='top'><td class='pad' style='
+border-left:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'>3</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>178-209</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>2.8-3.7 m</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>extensive</div></td></tr><tr valign='top'><td class='pad' style='
+border-left:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'>2</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>154-177</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>1.8-2.5 m</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>moderate</div></td></tr><tr valign='top'><td class='pad' style='
+border-left:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'><div style='text-align:center'>1</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>119-153</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>1.2-1.5 m</div></td><td class='pad' style=' border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>minimal</div></td></tr><tr height='0' style='border:none'><td
+width='19%'></td><td width='26%'></td><td width='33%'></td><td
+width='22%'></td></tr></table><b><i>Use the scale to answer the questions.</i></b></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:12' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;12.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>A hurricane has been classified as a category 3 hurricane.&nbsp; Which of the
+following is NOT true?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='96%'><span
+class='default'>the hurricane may get stronger</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>the hurricane has winds of 200
+km/h</span></td></tr><tr valign='baseline'><td><div class='choice'>c.</div></td><td><span
+class='default'>the hurricane will get weaker</span></td></tr><tr valign='baseline'><td><div
+class='choice'>d.</div></td><td><span class='default'>the hurricane has sea level changes of 4.0
+m</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:13' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;13.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>A hurricane hits land with wind speeds of 225 km/h and sea level changes of 5.5
+m.&nbsp; What damage classification would it be labeled as according to the Saffir-Simpson Hurricane
+Wind scale?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>catastrophic</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>extensive</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>moderate</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>extreme</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='top'>
+	<td></td>
+	<td></td>
+	<td>
+<div class='spacer'>&nbsp;</div>
+<div class='default'><div style='font-size:2pt'></div><table cellpadding='0' cellspacing='0'
+width='51%' border='0'><tr valign='top'><td style='border:none'></td><td colspan='4' class='pad'
+style=' border-left:0.8pt solid #000000; border-top:0.8pt solid #000000; border-right:0.8pt solid
+#000000;'><div style='text-align:center'><b>Air Temperature (&#176;F)</b></div></td></tr><tr
+valign='top'><td rowspan='2' class='pad' style=' border-left:0.8pt solid #000000; border-top:0.8pt
+solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><b>Relative
+Humidity (%)</b></td><td class='pad' style=' border-top:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'>75</td><td class='pad' style=' border-top:0.8pt solid
+#000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'>80</td><td class='pad'
+style=' border-top:0.8pt solid #000000; border-right:0.8pt solid #000000; border-bottom:0.8pt solid
+#000000;'>85</td><td class='pad' style=' border-top:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'>90</td></tr><tr valign='top'><td colspan='4' class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'><b>Apparent Temperature (&#176;F)</b></div></td></tr><tr valign='top'><td
+class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>0</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>69</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>73</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>78</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>83</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>10</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>70</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>75</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>80</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>85</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>20</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>72</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>77</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>82</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>87</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>30</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>73</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>78</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>84</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>90</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>40</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>74</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>79</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>86</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>93</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>50</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>75</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>81</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>88</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>96</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>60</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>76</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>82</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>90</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>100</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>70</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>77</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>85</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>93</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>106</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>80</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>78</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>86</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>97</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>113</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>90</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>79</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>88</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>102</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>122</div></td></tr><tr
+valign='top'><td class='pad' style=' border-left:0.8pt solid #000000; border-right:0.8pt solid
+#000000; border-bottom:0.8pt solid #000000;'><div style='text-align:center'>100</div></td><td
+class='pad' style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>80</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'><div style='text-align:center'>91</div></td><td class='pad'
+style=' border-right:0.8pt solid #000000; border-bottom:0.8pt solid #000000;'><div
+style='text-align:center'>108</div></td><td class='pad' style=' border-right:0.8pt solid #000000;
+border-bottom:0.8pt solid #000000;'>&nbsp;</td></tr><tr height='0' style='border:none'><td
+width='34%'></td><td width='17%'></td><td width='17%'></td><td width='16%'></td><td
+width='16%'></td></tr></table><b><i>Use the section of the Heat Index shown above to answer the
+questions.</i></b></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:14' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;14.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>All public pools in a local city are free when the heat index is at least
+90&#176;F.&nbsp; What is the minimum amount of relative humidity needed for the pools to be free if
+the air temperature is 85&#176;F?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>60%</span></td><td width='4%'><div class='choice'>c.</div></td><td width='46%'><span
+class='default'>80%</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>10%</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>50%</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:15' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;15.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>What air temperature and relative humidity produces the same apparent
+temperature as when the air temperature is 90&#176;F and the relative humidity is 40%?</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>70&#176;F, 85%</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>85&#176;F, 60%</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>75&#176;F, 90%</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>85&#176;F, 70%</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:16' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;16.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>A(n) ____ thunderstorm forms because of unequal heating of Earth&#8217;s surface
+within one air mass.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>frontal-mass</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>air-mass</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>cold-front</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>air-pressure</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:17' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;17.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>The rising, moist updrafts and the falling, cool downdrafts form a convection
+cell that produces the ____ associated with thunderstorms.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>temperatures</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>humidity</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>thunder</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>winds</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:18' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;18.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>Very severe thunderstorms can form when a ____ moves into an area containing a
+large supply of warm air to lift and condense.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>cold front</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>warm front</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>warm air mass</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>tornado</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:19' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;19.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>When friction between updrafts and downdrafts within a cumulonimbus cloud
+creates regions of air with opposite charges, ____ forms.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>warm air</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>precipitation</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>lightning</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>ozone</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:20' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;20.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>____ are often associated with very severe thunderstorms called
+supercells.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>Tornadoes</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>Hurricanes</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>Sea breezes</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>Heat waves</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:21' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;21.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>A mound of water driven toward coastal areas by hurricane winds is called
+____.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>a cyclone</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>storm surge</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>a supercell</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>a cold front</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:22' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;22.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>An extended period of well-below-normal rainfall is a ____.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>flood</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>heat wave</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>drought</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>tropical
+cyclone</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:23' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;23.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>The phenomenon in which the effects of cold air are worsened by wind is the
+____.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>supercell</span></td><td width='4%'><div class='choice'>c.</div></td><td
+width='46%'><span class='default'>windchill factor</span></td></tr><tr valign='baseline'><td><div
+class='choice'>b.</div></td><td><span class='default'>sea breeze</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>cold wave</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:24' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;24.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>The jet stream blowing over the top of a super cell would ____.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>cause updrafts to strengthen</span></td><td width='4%'><div
+class='choice'>c.</div></td><td width='46%'><span class='default'>increase the intensity of the
+storm</span></td></tr><tr valign='baseline'><td><div class='choice'>b.</div></td><td><span
+class='default'>increase the likelihood of a tornado forming </span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>all of the
+above</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+		<select name='MC:25' align='top' onmousewheel='return(false);'>
+			<option value=' '> 
+			<option value='A'>A
+			<option value='B'>B
+			<option value='C'>C
+			<option value='D'>D
+		</select>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;25.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>Thunder is produced by ____.</div>
+<div class='default'><table cellpadding='0' cellspacing='0' width='95%' border='0'><tr
+valign='baseline'><td width='4%'><div class='choice'>a.</div></td><td width='46%'><span
+class='default'>lightning super-heating the air</span></td><td width='4%'><div
+class='choice'>c.</div></td><td width='46%'><span class='default'>angels that are
+bowling</span></td></tr><tr valign='baseline'><td><div class='choice'>b.</div></td><td><span
+class='default'>lightning cooling the environment</span></td><td><div
+class='choice'>d.</div></td><td><span class='default'>all of the
+above</span></td></tr></table></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='top'>
+	<td colspan='3'><br>
+<div class='default'><b>Short Answer</b></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;1.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(4 pts) Name the two main ingredients for a thunderstorm, and
+<b><i>describe</i></b> why they are necessary.<br><br><br><br>-</div><div style='font-size:2pt'></div>
+		<textarea name='SA:1' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;2.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(3pts) Could the atmospheric conditions that cause a drought also cause the
+formation of a supercell? Explain your answer.<br><br><br><br>-</div><div style='font-size:2pt'></div>
+		<textarea name='SA:2' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;3.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>Why do weather forecasters often report the windchill factor in winter?</div><div style='font-size:2pt'></div>
+		<textarea name='SA:3' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='top'>
+	<td></td>
+	<td></td>
+	<td>
+<div class='spacer'>&nbsp;</div>
+<div class='default'><i>Choose the word or words that apply to each description.</i></div>
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;4.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>The conditions needed for the towering clouds of thunderstorms to develop
+include:<br>____ very low humidity<br>____ strong winds<br>____ abundant moisture<br>____ unstable
+air<br>____ large area of high air pressure</div><div style='font-size:2pt'></div>
+		<textarea name='SA:4' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;5.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>The dangers associated with severe thunderstorms include:<br>____
+lightning<br>____ tornadoes<br>____ thunder<br>____ drought<br>____ hail<br>____ high winds<br>____
+flooding</div><div style='font-size:2pt'></div>
+		<textarea name='SA:5' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;6.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>Places where a tropical cyclone is most likely to develop include:<br>____
+Arctic Ocean<br>____ tropical Pacific Ocean<br>____ tropical Atlantic Ocean<br>____ central United
+States</div><div style='font-size:2pt'></div>
+		<textarea name='SA:6' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;7.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(2 pts) Why is there a good chance of a thunderstorm in the afternoon after a
+warm day in a coastal region of Florida?<br><br>-</div><div style='font-size:2pt'></div>
+		<textarea name='SA:7' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;8.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(2pts) Why does the approaching cold front shown below increase the potential
+for a thunderstorm to occur?<br><b><i><img width='288' height='172' align='bottom' alt="sa008-1.jpg"
+src="chapter_13_test_ess_files/sa008-1.jpg" border='0'></i></b></div><div style='font-size:2pt'></div>
+		<textarea name='SA:8' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;9.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(3pts) Describe the process by which this lightning bolt would appear in the
+sky.<br><b><i><img width='288' height='218' align='bottom' alt="sa009-1.jpg"
+src="chapter_13_test_ess_files/sa009-1.jpg" border='0'></i></b></div><div style='font-size:2pt'></div>
+		<textarea name='SA:9' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;10.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(2pts) Why does thunder appear to follow lightning?<br><br><br>-</div><div style='font-size:2pt'></div>
+		<textarea name='SA:10' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+<tr valign='baseline'>
+	<td>
+	</td>
+	<td>
+		<p class='qnumber'>&nbsp;11.&nbsp;</p>
+	</td>
+	<td width='100%'>
+<div class='default'>(4pts)&nbsp; What conditions occur that have caused the central United States,
+including Oklahoma, Kansas, and Missouri, to earn the name &#8220;Tornado Alley&#8221;?</div><div style='font-size:2pt'></div>
+		<textarea name='SA:11' rows='5' cols='60' wrap='virtual'></textarea>
+
+<div class='spacer'>&nbsp;</div>
+	</td>
+</tr>
+</table>
+<br clear='all'>
+<br>
+<br>
+<table align='left' width='100%' cellpadding='0' cellspacing='0' border='0'>
+<tr>
+    <td bgcolor='#000000'>
+    <div style='font-size:1pt'>&nbsp;</div>
+    </td>
+</tr>
+<tr>
+    <td><input type='image' src='chapter_13_test_ess_files/submit.gif' alt='Grade and Submit'>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href='#' onclick='Restart(); return false'><img
+	    src='chapter_13_test_ess_files/restart.gif' border='0' alt='Start Over'></a>
+    </td>
+</tr>
+</table>
+</form>
+</body>
+</html>
